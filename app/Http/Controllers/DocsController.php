@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class DocsController extends Controller
 {
@@ -23,6 +24,7 @@ class DocsController extends Controller
      */
     public function index()
     {
-        return view('docs');
+        $documents = DB::table('documents')->get();
+        return view('docs', ['docs' => $documents]);
     }
 }

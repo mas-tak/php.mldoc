@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\File;
+use Gregwar\RST\Parser;
+use cebe\markdown\GithubMarkdown;
 use Validator;
 use App\Models\Doc;
 
@@ -30,6 +33,19 @@ class DocsController extends Controller
     }
 
     /**
+     * Show the document.
+     *
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
+    public function show($id)
+    {   
+        $doc = Doc::find($id);
+        $parser = ($doc->type == 'rst') ? new Parser(): new GithubMarkdown(); 
+        $html = $parser->parse(File::get($doc->path));
+        return view('show')->with('name', $doc->name)->with('html', $html);
+    }
+
+    /**
      * Add the document info.
      *
      * @return \Illuminate\Contracts\Support\Renderable
@@ -49,6 +65,7 @@ class DocsController extends Controller
         $validator = Validator::make($req->all(), [
             'name' => 'required',
             'path' => 'required',
+            'type' => 'required',
         ]);
 
         if ($validator->fails()) {

@@ -21,6 +21,7 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/docs', 'DocsController@index')->name('docs');
+Route::get('/docs/{id}', 'DocsController@show')->name('docs.show');
 Route::get('/docs/new', 'DocsController@regist')->name('docs.new');
 Route::post('/docs/new', 'DocsController@store')->name('docs.new');
 Route::get('/activity', 'ActivityController@index')->name('activity');

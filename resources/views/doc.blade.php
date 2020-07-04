@@ -21,6 +21,14 @@
                             <input class="col-2" type="text" name="path" />
                         </div>
                         <div class="row">
+                            <label class="col-2">type : </label>
+                            <input class="col-2" type="text" name="type" />
+                            <select>
+                                <option value="md">Markdown</option>
+                                <option value="rst">reStructuredText</option>
+                            </select>
+                        </div>
+                        <div class="row">
                             <input type="submit" value="Regist" /> 
                         </div>
                     </form>

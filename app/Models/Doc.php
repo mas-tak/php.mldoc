@@ -12,7 +12,7 @@ class Doc extends Model
      * @var array
      */
     protected $fillable = [
-        'id', 'name', 'path', 'generated',
+        'id', 'name', 'path', 'type', 'generated',
     ];
 
     protected $table = 'documents';

@@ -17,6 +17,7 @@ class CreateDocumentsTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('path');
+            $table->string('type');
             $table->dateTime('generated')->nullable();
             $table->timestamps();
         });

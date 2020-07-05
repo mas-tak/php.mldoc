@@ -2,6 +2,8 @@
 
 @section('content')
 <div class="container">
+    <docs-list></docs-list>
+    <!--
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card m-b-md">
@@ -28,5 +30,6 @@
             </div>
         </div>
     </div>
+    -->
 </div>
 @endsection

@@ -29,7 +29,17 @@ class DocsController extends Controller
      */
     public function index()
     {   
-        return view('docs')->with('docs', Doc::get());
+        return view('docs');//->with('docs', Doc::get());
+    }
+
+    /**
+     * Get the document list.
+     *
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
+    public function list()
+    {   
+        return Doc::get();
     }
 
     /**

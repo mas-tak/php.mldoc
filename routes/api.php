@@ -18,4 +18,5 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('/docs', 'DocsController@list')->name('docs');
+Route::get('/docs', 'DocsController@list');
+Route::post('/docs/store', 'DocsController@store');

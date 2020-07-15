@@ -1,6 +1,7 @@
 <template>
     <div class="container">
-        <div class="list-group">
+        <vue-loading v-show="loading" type="barsCylon" color="#333" :size="{ width: '50px', height: '50px' }"></vue-loading>
+        <div v-show="!loading" class="list-group">
             <!-- {{ route('docs.show', ['id' => $doc->id]) }} -->
             <div v-for="doc in docs" :key="doc.id" class="ribbon-wrapper">
                 <div class="ribbon-content">
@@ -13,15 +14,33 @@
 </template>
 
 <script>
+    import { VueLoading } from 'vue-loading-template'
     export default {
         async mounted() {
-            const ret = await window.axios.get("/api/docs")
-            this.docs = ret.data;
+            const ret = await window.axios.get("/api/docs").then(response => {
+                this.docs = response.data;
+                this.$emit('loaded')
+                setTimeout((() => {
+                    this.loading = false;
+                }).bind(this), 500) //TODO: transition not work ?
+            })
         },
         data() {
             return {
-                docs: window.data
+                docs: window.data,
+                loading: true,
             };
+        },
+        props: {
+        },
+        methods: {
+            loadingHide() {
+            },
+            loadingShow() {
+            },
+        },
+        components: {
+            VueLoading
         },
     }
 </script>

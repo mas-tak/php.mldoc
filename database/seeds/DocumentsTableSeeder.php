@@ -12,7 +12,7 @@ class DocumentsTableSeeder extends Seeder
     public function run()
     {
 	    DB::table('documents')->truncate();
-	    DB::table('documents')->insert([
+	    DB::table('documents')->insert([[
 	        'name'=>'Github Flavored Markdown',
 	        'path'=>dirname(__FILE__, 3) .'/storage/documents/gfm.md',
 	        'type'=>'md',
@@ -20,7 +20,6 @@ class DocumentsTableSeeder extends Seeder
 	        'name'=>'reStrycturedText',
 	        'path'=>dirname(__FILE__, 3) .'/storage/documents/rst.rst',
 	        'type'=>'rst',
-	    ]
-	    );
+		]]);
     }
 }
